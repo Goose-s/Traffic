@@ -141,8 +141,17 @@
             <input type="email" id="clientEmail" name="clientEmail" required>
             <label for="clientPhone">Phone:</label>
             <input type="tel" id="clientPhone" name="clientPhone">
-            <label for="clientMessage">Message:</label>
-            <textarea id="clientMessage" name="clientMessage" rows="4" placeholder="Leave a brief message..."></textarea>
+            <label for="subject">Subject:</label>
+<select id="subject" name="subject">
+    <option value="general">General Inquiry</option>
+    <option value="traffic_violation">Traffic Violation</option>
+    <option value="dui">DUI/DWI Defense</option>
+    <option value="license">License Restoration</option>
+    <option value="other">Other</option>
+</select>
+
+<label for="clientMessage">Message:</label>
+<textarea id="clientMessage" name="clientMessage" rows="4" placeholder="Leave a brief message..."></textarea>
             <input type="submit" value="Submit">
         </form>
     </section>
