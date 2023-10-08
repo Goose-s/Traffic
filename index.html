@@ -144,7 +144,7 @@ select {
 
 <div class="container">
     <section id="home">
-        <h2>Welcome to John Doe Law Firm</h2>
+        <h2>Welcome to Anthony Sharnov Law Firm</h2>
         <p>If you've received a traffic ticket or violation in New York, we can help! With years of experience, our team is committed to defending your rights and keeping your driving record clean.</p>
     </section>
 
@@ -162,7 +162,7 @@ select {
     <section id="contact">
         <h2>Contact Us</h2>
         <p>For a free consultation, reach out to us or leave your details below:</p>
-        <form action="https://script.google.com/macros/s/AKfycbxNaiNd18HrOAN2gyCixU4Ve6XOxByMUpkLL6TbVnbK6q11qCYpOeWg9RYkoXOULYSl/exec" method="post" id="contactForm">
+        <form id="contactForm" onsubmit="submitForm(event)">
             <label for="clientName">Name:</label>
             <input type="text" id="clientName" name="clientName" required>
             <label for="clientEmail">Email:</label>
@@ -197,6 +197,27 @@ select {
 <footer>
     &copy; 2023 Anthony Sharnov Law Firm. All Rights Reserved.
 </footer>
+<script>
+    function submitForm(event) {
+        event.preventDefault(); // prevent the default form submission
+
+        // Fetch form data
+        let formData = new FormData(document.getElementById('contactForm'));
+
+        // Send data to Google Apps Script
+        fetch('https://script.google.com/macros/s/AKfycbwldnsOBwwWs391JYnAo-KFFQ6oFRx-l0nlHCjTrwYjFFphw6VWKYhD63CT7dCOE_yK/exec', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json()) // expecting a json response
+        .then(data => {
+            // handle the response from Google Apps Script
+            // For now, just redirecting to the Thank You page
+            window.location.href = 'https://goose-s.github.io/traffic/thank%20you.html';
+        })
+        .catch(error => console.error('Error:', error));
+    }
+</script>
 
 </body>
 </html>
